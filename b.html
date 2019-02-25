@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.pelota{			
+			height: 200px;
+			width: 200px;
+			border-radius: 50%;
+			transition-property: all;
+			transition-duration: 1s;
+			transition-timing-function: ease;
+			position: absolute;
+			display: flex;
+			font-size: 25px;
+			align-items: center;
+			justify-content: center;
+			color: white;
+		}
+		.pelota.a{
+			background-color: rgba(255, 0, 0, 0.5);
+			left: 0;						
+			z-index: 0;			
+		}
+		.pelota.c{
+			background-color: rgba(0, 0, 255, 0.5);
+			right: 0;
+			z-index: 2;
+		}
+		.pelota.b{
+			background-color: rgba(0, 255, 0, 0.5);
+			right: calc(50% - 100px);
+			left: calc(50% - 100px);
+			z-index: 1;
+		}
+		.canasta{
+			border: 2px dashed white;
+			position: relative;
+			width: 100%;
+			height: 200px;
+		}
+		.canasta:hover .pelota.a{
+			left: calc(50% - 250px);
+			transform: rotate(360deg);
+		}
+		.canasta:hover .pelota.c{
+			right: calc(50% - 250px);
+			transform: rotate(-360deg);
+		}
+		body{
+			display: flex;
+			align-items: center;
+			align-content: center;			
+			height: 100vh;			
+			background: #373736;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="canasta">		
+		<div class="pelota a"><label>R</label></div>	
+		<div class="pelota b"><label>G</label></div>		
+		<div class="pelota c"><label>B</label></div>					
+	</div>	
+</body>
+</html>
