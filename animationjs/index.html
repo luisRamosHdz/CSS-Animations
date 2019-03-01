@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js element</title>
+    <style>
+        body{
+            display:flex;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+        }
+        .container{
+            border: 1px solid red;
+            width: 600px;
+        }
+        .pelota{
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            background-color: #16a085;
+        }
+        .btn{
+            text-align: center;
+            background-color: #7dc800;
+            border: none;
+            padding: .6em .8em .8em;
+            margin:  5px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            /* box-shadow: inset x y */
+            box-shadow: inset 0 -0.2em rgba(0,0,0,.2);
+            outline: 0;
+            transition: .2s;
+            will-change: transform;
+            -webkit-tap-highlight-color: transparent;
+            -moz-tap-highlight-color: transparent;
+            -ms-tap-highlight-color: transparent;
+        }
+        .btn:active{
+            transform: scale(.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="pelota" class="pelota"></div>
+        <div class="buttons">
+            <button class="btn" id="play">Play</button>
+            <button class="btn" id="pause">Pause</button>
+            <button class="btn" id="stop">Stop</button>
+            <button class="btn" id="reverse">Reverse</button>
+        </div>
+    </div>    
+</body>
+<script>
+    const pelota = document.getElementById('pelota');
+    //pelota.animate(keygrames=[],option{});
+    const animation = pelota.animate([
+        {//FROM
+            transform: 'translateX(0)'
+        },
+        {//TO
+            transform: 'translateX(500px)'
+        }
+    ],{
+        duration: 1000,
+        delay: 1000,
+        direction: 'normal',
+        easing: 'linear',
+        iterations: Infinity,
+        fill: 'forwards',
+        //Iniciar en el 50%  valores entre 0 y 1
+        iterationStart: .5,
+        //endDelay: // el tiempo a esperar cuando se acaba la animación 
+    });
+
+    const playButton= document.getElementById('play');
+    const pauseButton= document.getElementById('pause');
+    const stopButton= document.getElementById('stop');
+    const reverseButton= document.getElementById('reverse');
+
+    playButton.addEventListener('click',(event)=>{
+        animation.play();
+    });
+
+    pauseButton.addEventListener('click',(event)=>{
+        animation.pause();
+    });
+
+    stopButton.addEventListener('click',(event)=>{
+        animation.cancel();
+    });
+
+    reverseButton.addEventListener('click',(event)=>{
+        animation.reverse();
+    });
+    
+</script>
+</html>
